@@ -1,0 +1,16 @@
+:root {
+  --clr-font: #000;
+  --clr-primary: #ffffff;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+.dark-theme {
+  --clr-font: var(--white);
+  --clr-primary: var(--black);
+}
+
+.light-theme {
+  --clr-font: var(--black);
+  --clr-primary: var(--white);
+}

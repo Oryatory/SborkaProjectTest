@@ -1,0 +1,12 @@
+@use "../utils/" as u;
+
+.main__wrapper {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  margin-top: u.rem(85);
+
+  @media screen and (max-width: u.rem(410)) {
+    justify-content: center;
+  }
+}

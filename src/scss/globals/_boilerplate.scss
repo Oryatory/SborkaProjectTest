@@ -1,0 +1,30 @@
+@use "../utils" as u;
+@import "./colors";
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  line-height: 1;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: var(--clr-font);
+}
+
+.container {
+  max-width: u.rem(868);
+  margin: 0 auto;
+  padding: 0 clamp(u.rem(20), 10vw, u.rem(91));
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}

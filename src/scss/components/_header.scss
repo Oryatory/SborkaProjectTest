@@ -1,0 +1,45 @@
+@use "../utils" as u;
+
+.header {
+  border-bottom: 1px solid #cfcfcf;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: u.rem(26) u.rem(30);
+  }
+
+  &__cart-button {
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      position: relative;
+    }
+  }
+
+  &__total-amount {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    background-color: #3366ff;
+    border-radius: 50%;
+    color: white;
+    font-size: u.rem(10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: u.rem(-5);
+    right: u.rem(-5);
+  }
+
+  &__burger-btn {
+    margin-left: u.rem(32);
+  }
+}

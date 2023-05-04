@@ -16,7 +16,21 @@ const ProductsList = () => {
     >
       {products.map((product: ProductProps) => {
         return (
-          <Link to={`/product/${product.id}`}>
+          <Link
+            key={product.id}
+            to={`/product/${product.id}`}
+            onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {
+              const targetTag = (event.target as HTMLElement).tagName;
+
+              if (
+                targetTag === "BUTTON" ||
+                targetTag === "svg" ||
+                targetTag === "path"
+              ) {
+                event.preventDefault();
+              }
+            }}
+          >
             <SingleProduct key={product.id} {...product} />
           </Link>
         );

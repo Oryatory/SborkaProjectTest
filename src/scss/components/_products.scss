@@ -16,6 +16,10 @@
     margin: u.rem(60);
     width: 100%;
 
+    @media screen and (max-width: u.rem(410)) {
+      margin-inline: u.rem(40);
+    }
+
     a {
       flex-shrink: 0;
     }

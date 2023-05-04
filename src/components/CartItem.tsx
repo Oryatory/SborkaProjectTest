@@ -13,7 +13,7 @@ const CartItem: FC<ProductProps> = ({ name, image, price, amount, id }) => {
   return (
     <motion.div
       className="cart__cart-item"
-      animate={{ opacity: amount > 0 ? 1 : 0 }}
+      animate={{ opacity: (amount as number) > 0 ? 1 : 0 }}
     >
       <div className="cart-item__image">
         <img src={image} alt={name} />
@@ -47,7 +47,9 @@ const CartItem: FC<ProductProps> = ({ name, image, price, amount, id }) => {
               <IncreaseBtn />
             </button>
           </div>
-          <span className="product__price">{formatPrice(price * amount)}</span>
+          <span className="product__price">
+            {formatPrice(price * (amount as number))}
+          </span>
         </div>
       </div>
     </motion.div>

@@ -9,16 +9,16 @@ import { ProductProps } from "../utils/data";
 import { CartState } from "../context/cart_context";
 
 type ADD_TO_CART = {
-  type: typeof ADD_TO_CART;
+  type: string;
   payload: { product: ProductProps };
 };
-type REMOVE_CART_ITEM = { type: typeof REMOVE_CART_ITEM; payload: string };
+type REMOVE_CART_ITEM = { type: string; payload: string };
 type TOGGLE_CART_ITEM_AMOUNT = {
-  type: typeof TOGGLE_CART_ITEM_AMOUNT;
+  type: string;
   payload: { id: string; value: string };
 };
-type COUNT_CART_TOTALS = { type: typeof COUNT_CART_TOTALS; payload: null };
-type TOGGLE_CART = { type: typeof TOGGLE_CART; payload: null };
+type COUNT_CART_TOTALS = { type: string; payload: null };
+type TOGGLE_CART = { type: string; payload: null };
 
 type ActionType =
   | ADD_TO_CART
@@ -36,7 +36,7 @@ const cart_reducer = (state: CartState, action: ActionType): CartState => {
     if (tempItem) {
       const tempCart = state.cart.map((cartItem) => {
         if (cartItem.id === id) {
-          let newAmount = cartItem.amount + 1;
+          let newAmount = (cartItem.amount as number) + 1;
           return { ...cartItem, amount: newAmount };
         } else {
           return cartItem;
@@ -66,11 +66,11 @@ const cart_reducer = (state: CartState, action: ActionType): CartState => {
 
       if (item.id === id) {
         if (value === "inc") {
-          let newAmount = item.amount + 1;
+          let newAmount = (item.amount as number) + 1;
           return { ...item, amount: newAmount };
         }
         if (value === "dec") {
-          let newAmount = item.amount - 1;
+          let newAmount = (item.amount as number) - 1;
           return { ...item, amount: newAmount };
         }
       }
@@ -84,8 +84,8 @@ const cart_reducer = (state: CartState, action: ActionType): CartState => {
     const { total_items, total_amount } = state.cart.reduce(
       (total, cartItem: ProductProps) => {
         const { amount, price } = cartItem;
-        total.total_items += amount;
-        total.total_amount += price * amount;
+        total.total_items += amount as number;
+        total.total_amount += price * (amount as number);
         return total;
       },
       { total_items: 0, total_amount: 0 }

@@ -1,7 +1,7 @@
 import { useCartContext } from "../context/cart_context";
 import CartItem from "./CartItem";
 import { formatPrice } from "../utils/formatPrice";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { motion } from "framer-motion";
 import CloseCartBtn from "./CloseCartBtn";
 import { useGlobalContext } from "../context/useGlobalContext";
@@ -18,6 +18,10 @@ const Cart: FC = () => {
   } = useCartContext();
   const { width, lockScroll } = useGlobalContext();
 
+  useEffect(() => {
+    if (width > 768) document.body.classList.remove("scroll-lock");
+  }, [width]);
+
   if (width <= 768) {
     return (
       <>
@@ -27,7 +31,9 @@ const Cart: FC = () => {
             opacity: cartIsOpen ? "33%" : 0,
             zIndex: cartIsOpen ? "0" : "-1",
           }}
-          onClick={() => toggleCart()}
+          onClick={() => {
+            lockScroll(), toggleCart();
+          }}
         ></motion.div>
         <motion.div
           className="cart"

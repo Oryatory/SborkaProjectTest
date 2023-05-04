@@ -21,7 +21,7 @@ const GlobalContext = createContext<GlobalContextType>({
 export const GlobalProvider: FC<GlobalProviderPropsType> = ({ children }) => {
   const { width } = useWindowWidth();
   const { cartIsOpen } = useCartContext();
-  const lockScroll = async () => {
+  const lockScroll = () => {
     if (!cartIsOpen && width <= 768) {
       document.body.classList.add("scroll-lock");
     } else {

@@ -8,7 +8,7 @@ const App: FC = () => {
   const handleLoading = () => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
+    }, 1000);
   };
 
   useEffect(() => {

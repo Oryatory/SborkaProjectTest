@@ -31,7 +31,7 @@ const Cart: FC = () => {
           }}
         ></motion.div>
         <motion.div
-          onPan={(event, info) => {
+          onPan={(_event, info) => {
             if (info.delta.y < -6 && width <= 410) {
               lockScroll();
               toggleCart();

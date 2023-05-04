@@ -11,9 +11,7 @@ const Header: FC = () => {
 
   return (
     <motion.div
-      onPan={(event, info) => {
-        console.log(info.delta.y);
-
+      onPan={(_event, info) => {
         if (info.delta.y > 6) {
           lockScroll();
           toggleCart();

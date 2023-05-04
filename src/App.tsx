@@ -12,8 +12,13 @@ const App: FC = () => {
   };
 
   useEffect(() => {
+    document.addEventListener("DOMContentLoaded", handleLoading);
     window.addEventListener("load", handleLoading);
-    return () => window.removeEventListener("load", handleLoading);
+
+    return () => {
+      document.removeEventListener("DOMContentLoaded", handleLoading);
+      window.removeEventListener("load", handleLoading);
+    };
   }, []);
 
   return <>{isLoading ? <Loading /> : <MainPage />}</>;

@@ -1,25 +1,20 @@
 import { useCartContext } from "../context/cart_context";
 import CartItem from "./CartItem";
-import { formatPrice } from "../utils/formatPrice";
+
 import { FC, useEffect } from "react";
 import { motion } from "framer-motion";
-import CloseCartBtn from "./CloseCartBtn";
+import CloseCartBtn from "./buttons/CloseCartBtn";
 import { useGlobalContext } from "../context/useGlobalContext";
+import Totals from "./Totals";
 
 const Cart: FC = () => {
-  const {
-    cart,
-    cartIsOpen,
-    total_items,
-    total_amount,
-    tax_fee,
-    shipping_fee,
-    toggleCart,
-  } = useCartContext();
+  const { cart, cartIsOpen, total_items, toggleCart } = useCartContext();
   const { width, lockScroll } = useGlobalContext();
 
   useEffect(() => {
     if (width > 768) document.body.classList.remove("scroll-lock");
+    else if (width <= 768 && cartIsOpen)
+      document.body.classList.add("scroll-lock");
   }, [width]);
 
   if (width <= 768) {
@@ -73,24 +68,7 @@ const Cart: FC = () => {
               <p>Your cart is empty!</p>
             )}
           </div>
-          <div className="cart__totals-container">
-            <div className="cart__total-container">
-              <p>Subtotal</p>
-              <p>{formatPrice(total_amount)}</p>
-            </div>
-            <div className="cart__total-container">
-              <p>Tax</p>
-              <p>{formatPrice(tax_fee)}</p>
-            </div>
-            <div className="cart__total-container">
-              <p>Shipping</p>
-              <p>{formatPrice(shipping_fee)}</p>
-            </div>
-            <div className="cart__total-container">
-              <p>Total</p>
-              <p>{formatPrice(total_amount + shipping_fee)}</p>
-            </div>
-          </div>
+          <Totals />
         </motion.div>
       </>
     );
@@ -111,24 +89,7 @@ const Cart: FC = () => {
               <p>Your cart is empty!</p>
             )}
           </div>
-          <div className="cart__totals-container">
-            <div className="cart__total-container">
-              <p>Subtotal</p>
-              <p>{formatPrice(total_amount)}</p>
-            </div>
-            <div className="cart__total-container">
-              <p>Tax</p>
-              <p>{formatPrice(tax_fee)}</p>
-            </div>
-            <div className="cart__total-container">
-              <p>Shipping</p>
-              <p>{formatPrice(shipping_fee)}</p>
-            </div>
-            <div className="cart__total-container">
-              <p>Total</p>
-              <p>{formatPrice(total_amount + shipping_fee)}</p>
-            </div>
-          </div>
+          <Totals />
         </div>
       )}
     </>

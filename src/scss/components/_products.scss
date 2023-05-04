@@ -15,12 +15,15 @@
     max-width: u.rem(890);
     margin: u.rem(60);
     width: 100%;
+
+    a {
+      flex-shrink: 0;
+    }
   }
 }
 
 .product {
   &__card {
-    flex-shrink: 0;
     border: u.rem(1) solid #e7e7e7;
     border-radius: u.rem(3);
     width: u.rem(250);
@@ -28,6 +31,8 @@
     flex-direction: column;
     justify-content: space-between;
     padding: u.rem(15);
+    height: 100%;
+
     cursor: pointer;
     h5 {
       margin-bottom: u.rem(13);

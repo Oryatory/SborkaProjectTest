@@ -11,8 +11,8 @@ export interface ProductProps {
   image: string;
   id: string;
   amount?: number;
-  productIsOpen?: boolean;
-  setProductIsOpen: (({ product, isOpen }: productIsOpenType) => void) | null;
+  // productIsOpen?: boolean;
+  // setProductIsOpen: (({ product, isOpen }: productIsOpenType) => void) | null;
 }
 export interface productIsOpenType {
   product: ProductProps | null;
@@ -26,8 +26,8 @@ export const products: ProductProps[] = [
     image: nb01,
     id: "MT91547",
     amount: 0,
-    productIsOpen: false,
-    setProductIsOpen: null,
+    // productIsOpen: false,
+    // setProductIsOpen: null,
   },
   {
     name: "New Balance Made in UK 920 Chinese New Year",
@@ -35,8 +35,8 @@ export const products: ProductProps[] = [
     image: nb02,
     id: "MT91548",
     amount: 0,
-    productIsOpen: false,
-    setProductIsOpen: null,
+    // productIsOpen: false,
+    // setProductIsOpen: null,
   },
   {
     name: "New Balance 373 Modern Classics",
@@ -44,8 +44,8 @@ export const products: ProductProps[] = [
     image: nb03,
     id: "MT91549",
     amount: 0,
-    productIsOpen: false,
-    setProductIsOpen: null,
+    // productIsOpen: false,
+    // setProductIsOpen: null,
   },
   {
     name: "New Balance Made in UK 670 Chinese New Year",
@@ -53,8 +53,8 @@ export const products: ProductProps[] = [
     image: nb04,
     id: "MT91550",
     amount: 0,
-    productIsOpen: false,
-    setProductIsOpen: null,
+    // productIsOpen: false,
+    // setProductIsOpen: null,
   },
   {
     name: "New Balance X-Racer Utility",
@@ -62,8 +62,8 @@ export const products: ProductProps[] = [
     image: nb05,
     id: "MT91551",
     amount: 0,
-    productIsOpen: false,
-    setProductIsOpen: null,
+    // productIsOpen: false,
+    // setProductIsOpen: null,
   },
   {
     name: "New Balance 5740 Think Colorfully",
@@ -71,7 +71,7 @@ export const products: ProductProps[] = [
     image: nb06,
     id: "MT91552",
     amount: 0,
-    productIsOpen: false,
-    setProductIsOpen: null,
+    // productIsOpen: false,
+    // setProductIsOpen: null,
   },
 ];

@@ -43,18 +43,6 @@ const Products: FC = () => {
           );
         })}
       </motion.div>
-
-      <motion.div
-        className="products__wrapper"
-        animate={{
-          opacity: selectedProduct ? 1 : 0,
-
-          display: selectedProduct ? "flex" : "none",
-        }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-      >
-        <SingleProductPage {...(selectedProduct as ProductProps)} />
-      </motion.div>
     </div>
   );
 };

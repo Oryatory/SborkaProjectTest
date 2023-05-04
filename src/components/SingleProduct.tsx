@@ -2,33 +2,15 @@ import { FC } from "react";
 import { formatPrice } from "../utils/formatPrice";
 import { useCartContext } from "../context/cart_context";
 import { useGlobalContext } from "../context/useGlobalContext.tsx";
-import CartBtn from "./CartBtn";
+import CartBtn from "./buttons/CartBtn";
 import { ProductProps } from "../utils/data.tsx";
 
-const SingleProduct: FC<ProductProps> = ({
-  name,
-  price,
-  image,
-  id,
-  setProductIsOpen,
-}) => {
+const SingleProduct: FC<ProductProps> = ({ name, price, image, id }) => {
   const { addToCart, toggleCart } = useCartContext();
   const { width, lockScroll } = useGlobalContext();
 
   return (
-    <div
-      className="product__card"
-      onClick={(event) => {
-        const btn = (event.target as Element).closest(".product__card-btn");
-        if (!btn) {
-          setProductIsOpen &&
-            setProductIsOpen({
-              product: { name, price, image, id, setProductIsOpen },
-              isOpen: true,
-            });
-        }
-      }}
-    >
+    <div className="product__card">
       <div className="product__image">
         <img src={image} alt={name} />
       </div>
@@ -37,7 +19,7 @@ const SingleProduct: FC<ProductProps> = ({
         <button
           className="product__card-btn"
           onClick={() => {
-            addToCart({ name, price, id, image, setProductIsOpen });
+            addToCart({ name, price, id, image });
             if (width < 768) {
               lockScroll();
               toggleCart();

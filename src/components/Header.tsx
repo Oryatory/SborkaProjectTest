@@ -1,7 +1,7 @@
 import { FC } from "react";
-import CartBtn from "./CartBtn";
+import CartBtn from "./buttons/CartBtn";
 import { useCartContext } from "../context/cart_context";
-import BurgerBtn from "./BurgerBtn";
+import BurgerBtn from "./buttons/BurgerBtn";
 import { useGlobalContext } from "../context/useGlobalContext";
 
 const Header: FC = () => {

@@ -7,7 +7,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  position: relative;
   line-height: 1;
 }
 
@@ -37,4 +36,9 @@ button {
 
 span {
   font-size: u.rem(14);
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

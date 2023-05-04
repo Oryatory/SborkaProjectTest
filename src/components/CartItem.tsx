@@ -1,7 +1,7 @@
 import { formatPrice } from "../utils/formatPrice";
-import IncreaseBtn from "./IncreaseBtn";
-import DecreaseBtn from "./DecreaseBtn";
-import DeleteBtn from "./DeleteBtn";
+import IncreaseBtn from "./buttons/IncreaseBtn";
+import DecreaseBtn from "./buttons/DecreaseBtn";
+import DeleteBtn from "./buttons/DeleteBtn";
 import { useCartContext } from "../context/cart_context";
 import { ProductProps } from "../utils/data";
 import { FC } from "react";

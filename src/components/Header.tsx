@@ -11,13 +11,13 @@ const Header: FC = () => {
 
   return (
     <motion.div
-      drag="x"
-      dragSnapToOrigin={true}
-      dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0}
-      onDragEnd={() => {
-        lockScroll();
-        toggleCart();
+      onPan={(event, info) => {
+        console.log(info.delta.y);
+
+        if (info.delta.y > 6) {
+          lockScroll();
+          toggleCart();
+        }
       }}
       className="header"
     >

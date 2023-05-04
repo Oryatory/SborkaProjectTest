@@ -17,34 +17,6 @@ const Cart: FC = () => {
       document.body.classList.add("scroll-lock");
   }, [width]);
 
-  const getMotionProps = () => {
-    if (width <= 410) {
-      return {
-        drag: "y",
-        dragConstraints: { bottom: 0 },
-        dragElastic: 0,
-        dragMomentum: false,
-      };
-    } else if (width > 410 && width <= 768) {
-      return {
-        drag: "x",
-        dragConstraints: { top: 0, bottom: 0, right: 0 },
-        dragElastic: 0,
-        dragMomentum: false,
-      };
-    } else
-      return {
-        drag: false,
-        dragConstraints: { right: 0, left: 0, top: 0, bottom: 0 },
-        dragElastic: 0,
-        dragMomentum: false,
-      };
-  };
-
-  let motionProps = getMotionProps();
-
-  const { drag, dragConstraints, dragElastic } = motionProps;
-
   if (width <= 768) {
     return (
       <>
@@ -59,12 +31,14 @@ const Cart: FC = () => {
           }}
         ></motion.div>
         <motion.div
-          drag={drag as boolean | "y" | "x" | undefined}
-          dragConstraints={dragConstraints}
-          dragElastic={dragElastic}
-          onDragEnd={() => {
-            lockScroll();
-            toggleCart();
+          onPan={(event, info) => {
+            if (info.delta.y < -6 && width <= 410) {
+              lockScroll();
+              toggleCart();
+            } else if (info.delta.x > 6 && width <= 768) {
+              lockScroll();
+              toggleCart();
+            }
           }}
           className="cart"
           animate={

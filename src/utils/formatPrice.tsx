@@ -5,5 +5,6 @@ export const formatPrice = (number: number): string => {
     minimumFractionDigits: 0,
   })
     .format(number / 100)
-    .replace(/,/g, " ");
+    .replace(/,/g, " ")
+    .replace(/\$/g, "$ ");
 };

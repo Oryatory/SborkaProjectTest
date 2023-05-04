@@ -50,6 +50,7 @@
   }
   h4 {
     margin-bottom: u.rem(30);
+    font-size: u.rem(18);
   }
 
   &__items {
@@ -85,7 +86,7 @@
   }
 
   &__close-btn {
-    padding: u.rem(40);
+    padding: u.rem(29);
     padding-bottom: 0;
     @media screen and (max-width: u.rem(365)) {
       padding: clamp(u.rem(15), 6vw, u.rem(40));
@@ -99,7 +100,8 @@
 
 .cart-item {
   &__image {
-    width: u.rem(90);
+    width: u.rem(100);
+    padding-inline: u.rem(5);
     margin-right: u.rem(11);
     flex-shrink: 0;
     display: flex;

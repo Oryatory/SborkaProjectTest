@@ -28,3 +28,13 @@ button {
   border: none;
   cursor: pointer;
 }
+
+.scroll-lock {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+span {
+  font-size: u.rem(14);
+}

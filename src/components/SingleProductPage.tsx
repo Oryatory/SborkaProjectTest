@@ -3,7 +3,7 @@ import { formatPrice } from "../utils/formatPrice";
 import CartBtn from "./CartBtn";
 import { ProductProps } from "../utils/data";
 import { FC } from "react";
-import useWindowWidth from "../utils/useWindowWidth";
+import { useGlobalContext } from "../context/useGlobalContext";
 
 const SingleProductPage: FC<ProductProps> = ({
   name,
@@ -14,7 +14,7 @@ const SingleProductPage: FC<ProductProps> = ({
   setProductIsOpen,
 }) => {
   const { addToCart, toggleCart } = useCartContext();
-  const { width } = useWindowWidth();
+  const { width } = useGlobalContext();
 
   return (
     <div className="single-product__container">

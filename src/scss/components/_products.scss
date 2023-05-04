@@ -29,8 +29,9 @@
     justify-content: space-between;
     padding: u.rem(15);
     cursor: pointer;
-    h4 {
+    h5 {
       margin-bottom: u.rem(13);
+      font-size: u.rem(14);
     }
   }
   &__image {
@@ -54,5 +55,9 @@
     svg {
       color: #ffffff;
     }
+  }
+
+  &__price {
+    font-size: u.rem(14);
   }
 }

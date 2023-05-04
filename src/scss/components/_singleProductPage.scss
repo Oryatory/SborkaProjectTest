@@ -30,6 +30,7 @@
   &__image-container {
     margin-bottom: u.rem(20);
     border: u.rem(1) solid #d5d5d5;
+    border-radius: u.rem(3);
     flex-grow: 1;
     width: 100%;
     img {

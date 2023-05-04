@@ -15,6 +15,12 @@
     margin: u.rem(26) u.rem(30);
   }
 
+  &__logo {
+    span {
+      font-size: u.rem(18);
+    }
+  }
+
   &__cart-button {
     button {
       background: transparent;

@@ -1,20 +1,19 @@
 import { FC } from "react";
 import { formatPrice } from "../utils/formatPrice";
 import { useCartContext } from "../context/cart_context";
+import { useGlobalContext } from "../context/useGlobalContext.tsx";
 import CartBtn from "./CartBtn";
 import { ProductProps } from "../utils/data.tsx";
-import useWindowWidth from "../utils/useWindowWidth.tsx";
 
 const SingleProduct: FC<ProductProps> = ({
   name,
   price,
   image,
-  amount,
   id,
   setProductIsOpen,
 }) => {
   const { addToCart, toggleCart } = useCartContext();
-  const { width } = useWindowWidth();
+  const { width, lockScroll } = useGlobalContext();
 
   return (
     <div
@@ -24,7 +23,7 @@ const SingleProduct: FC<ProductProps> = ({
         if (!btn) {
           setProductIsOpen &&
             setProductIsOpen({
-              product: { name, price, image, amount, id, setProductIsOpen },
+              product: { name, price, image, id, setProductIsOpen },
               isOpen: true,
             });
         }
@@ -33,13 +32,14 @@ const SingleProduct: FC<ProductProps> = ({
       <div className="product__image">
         <img src={image} alt={name} />
       </div>
-      <h4>{name}</h4>
+      <h5>{name}</h5>
       <div className="product__footer">
         <button
           className="product__card-btn"
           onClick={() => {
-            addToCart({ name, price, id, image, amount, setProductIsOpen });
+            addToCart({ name, price, id, image, setProductIsOpen });
             if (width < 768) {
+              lockScroll();
               toggleCart();
             }
           }}

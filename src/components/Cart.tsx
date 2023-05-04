@@ -2,9 +2,9 @@ import { useCartContext } from "../context/cart_context";
 import CartItem from "./CartItem";
 import { formatPrice } from "../utils/formatPrice";
 import { FC } from "react";
-import useWindowWidth from "../utils/useWindowWidth";
 import { motion } from "framer-motion";
 import CloseCartBtn from "./CloseCartBtn";
+import { useGlobalContext } from "../context/useGlobalContext";
 
 const Cart: FC = () => {
   const {
@@ -16,7 +16,7 @@ const Cart: FC = () => {
     shipping_fee,
     toggleCart,
   } = useCartContext();
-  const { width } = useWindowWidth();
+  const { width, lockScroll } = useGlobalContext();
 
   if (width <= 768) {
     return (
@@ -45,7 +45,12 @@ const Cart: FC = () => {
         >
           {width <= 410 && (
             <div className="cart__close-btn">
-              <button onClick={() => toggleCart()}>
+              <button
+                onClick={() => {
+                  lockScroll();
+                  toggleCart();
+                }}
+              >
                 <CloseCartBtn />
               </button>
             </div>

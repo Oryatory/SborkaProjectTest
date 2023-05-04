@@ -1,13 +1,12 @@
 import { FC } from "react";
 import CartBtn from "./CartBtn";
 import { useCartContext } from "../context/cart_context";
-import useWindowWidth from "../utils/useWindowWidth";
 import BurgerBtn from "./BurgerBtn";
+import { useGlobalContext } from "../context/useGlobalContext";
 
 const Header: FC = () => {
   const { total_items, toggleCart } = useCartContext();
-
-  const { width } = useWindowWidth();
+  const { width, lockScroll } = useGlobalContext();
 
   return (
     <div className="header">
@@ -32,12 +31,27 @@ const Header: FC = () => {
           <span>.shop</span>
         </div>
         <div className="header__cart-button">
-          <button onClick={width <= 410 ? () => toggleCart() : () => {}}>
+          <button
+            onClick={
+              width <= 410
+                ? () => {
+                    lockScroll();
+                    toggleCart();
+                  }
+                : () => {}
+            }
+          >
             <CartBtn fill="black" />
             <div className="header__total-amount">{total_items}</div>
           </button>
           {width <= 768 && width > 410 ? (
-            <button className="header__burger-btn" onClick={() => toggleCart()}>
+            <button
+              className="header__burger-btn"
+              onClick={() => {
+                lockScroll();
+                toggleCart();
+              }}
+            >
               <BurgerBtn />
             </button>
           ) : null}

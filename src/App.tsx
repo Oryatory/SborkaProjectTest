@@ -1,8 +1,22 @@
-import { FC } from "react";
+import { FC, useState, useEffect } from "react";
 import MainPage from "./pages/MainPage";
+import Loading from "./components/Loading";
 
 const App: FC = () => {
-  return <MainPage />;
+  const [isLoading, setIsLoading] = useState(true);
+
+  const handleLoading = () => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2500);
+  };
+
+  useEffect(() => {
+    window.addEventListener("load", handleLoading);
+    return () => window.removeEventListener("load", handleLoading);
+  }, []);
+
+  return <>{isLoading ? <Loading /> : <MainPage />}</>;
 };
 
 export default App;

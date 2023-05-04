@@ -39,7 +39,7 @@ const CartItem: FC<ProductProps> = ({ name, image, price, amount, id }) => {
             >
               <DecreaseBtn />
             </button>
-            <p>{amount}</p>
+            <span>{amount}</span>
             <button
               className="cart-item__increase-btn"
               onClick={() => toggleAmount(id, "inc")}
@@ -47,7 +47,7 @@ const CartItem: FC<ProductProps> = ({ name, image, price, amount, id }) => {
               <IncreaseBtn />
             </button>
           </div>
-          <p>{formatPrice(price * amount)}</p>
+          <span className="product__price">{formatPrice(price * amount)}</span>
         </div>
       </div>
     </motion.div>

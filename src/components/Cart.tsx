@@ -45,12 +45,18 @@ const Cart: FC = () => {
             width > 410
               ? {
                   x: cartIsOpen ? 0 : 410,
+                  opacity: cartIsOpen ? 1 : 0,
                 }
               : {
                   y: cartIsOpen && width <= 410 ? 0 : "-100%",
+                  opacity: cartIsOpen ? 1 : 0,
                 }
           }
-          initial={cartIsOpen && width <= 410 ? { y: "-100%" } : { y: 0 }}
+          initial={
+            cartIsOpen && width <= 410
+              ? { y: "-100%", opacity: 1 }
+              : { y: 0, opacity: 0 }
+          }
           transition={{ ease: "easeInOut" }}
         >
           {width <= 410 && (

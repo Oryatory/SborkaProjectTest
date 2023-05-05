@@ -12,8 +12,12 @@ const CartItem: FC<ProductProps> = ({ name, image, price, amount, id }) => {
 
   return (
     <motion.div
+      key={id}
       className="cart__cart-item"
-      animate={{ opacity: (amount as number) > 0 ? 1 : 0 }}
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
     >
       <div className="cart-item__image">
         <img src={image} alt={name} />

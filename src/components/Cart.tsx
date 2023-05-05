@@ -1,8 +1,7 @@
 import { useCartContext } from "../context/cart_context";
 import CartItem from "./CartItem";
-
 import { FC, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import CloseCartBtn from "./buttons/CloseCartBtn";
 import { useGlobalContext } from "../context/useGlobalContext";
 import Totals from "./Totals";
@@ -94,14 +93,28 @@ const Cart: FC = () => {
         <div className="cart">
           <div className="cart__items-container">
             <h4>My basket</h4>
+
             {total_items > 0 ? (
-              <div className="cart__items">
-                {cart.map((item) => {
-                  return <CartItem key={item.id} {...item} />;
-                })}
-              </div>
+              <motion.div
+                className="cart__items"
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                exit={{ opacity: 0 }}
+              >
+                <AnimatePresence>
+                  {cart.map((item) => {
+                    return <CartItem key={item.id} {...item} />;
+                  })}
+                </AnimatePresence>
+              </motion.div>
             ) : (
-              <p>Your cart is empty!</p>
+              <motion.p
+                animate={{ opacity: 1 }}
+                initial={{ opacity: 0 }}
+                exit={{ opacity: 0 }}
+              >
+                Your basket is empty!
+              </motion.p>
             )}
           </div>
           <Totals />

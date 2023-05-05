@@ -21,7 +21,6 @@ const ProductsList = () => {
             to={`/product/${product.id}`}
             onClick={(event: React.MouseEvent<HTMLAnchorElement>) => {
               const targetTag = (event.target as HTMLElement).tagName;
-              window.scrollTo(0, 0);
 
               if (
                 targetTag === "BUTTON" ||
@@ -29,6 +28,8 @@ const ProductsList = () => {
                 targetTag === "path"
               ) {
                 event.preventDefault();
+              } else {
+                window.scrollTo(0, 0);
               }
             }}
           >

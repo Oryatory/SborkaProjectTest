@@ -74,9 +74,11 @@ const Cart: FC = () => {
             <h4>My basket</h4>
             {total_items > 0 ? (
               <div className="cart__items">
-                {cart.map((item) => {
-                  return <CartItem key={item.id} {...item} />;
-                })}
+                <AnimatePresence>
+                  {cart.map((item) => {
+                    return <CartItem key={item.id} {...item} />;
+                  })}
+                </AnimatePresence>
               </div>
             ) : (
               <p>Your cart is empty!</p>

@@ -3,22 +3,13 @@ import CartBtn from "./buttons/CartBtn";
 import { useCartContext } from "../context/cart_context";
 import BurgerBtn from "./buttons/BurgerBtn";
 import { useGlobalContext } from "../context/useGlobalContext";
-import { motion } from "framer-motion";
 
 const Header: FC = () => {
   const { total_items, toggleCart } = useCartContext();
   const { width, lockScroll } = useGlobalContext();
 
   return (
-    <motion.div
-      onPan={(_event, info) => {
-        if (info.delta.y > 5) {
-          lockScroll();
-          toggleCart();
-        }
-      }}
-      className="header"
-    >
+    <div className="header">
       <div className="header__wrapper">
         <div className="header__logo">
           <svg
@@ -66,7 +57,7 @@ const Header: FC = () => {
           ) : null}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 export default Header;

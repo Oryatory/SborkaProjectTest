@@ -30,15 +30,6 @@ const Cart: FC = () => {
           }}
         ></motion.div>
         <motion.div
-          onPan={(_event, info) => {
-            if (info.delta.y < -5 && width <= 410) {
-              lockScroll();
-              toggleCart();
-            } else if (info.delta.x > 5 && width <= 768) {
-              lockScroll();
-              toggleCart();
-            }
-          }}
           className="cart"
           animate={
             width > 410

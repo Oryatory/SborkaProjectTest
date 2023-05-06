@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const SingleProductPage: FC = () => {
   const { addToCart, toggleCart } = useCartContext();
-  const { width } = useGlobalContext();
+  const { width, lockScroll } = useGlobalContext();
   const { productId } = useParams();
   const product = products.find((pr) => pr.id === productId);
 
@@ -41,6 +41,7 @@ const SingleProductPage: FC = () => {
             onClick={() => {
               addToCart({ name, price, id, image, amount });
               if (width < 768) {
+                lockScroll();
                 toggleCart();
               }
             }}

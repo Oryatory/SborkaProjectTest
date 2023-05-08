@@ -1,6 +1,6 @@
 import { useCartContext } from "../context/cart_context";
 import CartItem from "./CartItem";
-import { FC, useEffect } from "react";
+import { FC, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import CloseCartBtn from "./buttons/CloseCartBtn";
 import { useGlobalContext } from "../context/useGlobalContext";
@@ -116,4 +116,4 @@ const Cart: FC = () => {
     </>
   );
 };
-export default Cart;
+export default memo(Cart);

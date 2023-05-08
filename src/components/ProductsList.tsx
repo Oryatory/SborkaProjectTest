@@ -3,8 +3,10 @@ import { ProductProps } from "../utils/data";
 import SingleProduct from "./SingleProduct";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { FC } from "react";
+import { MainProps } from "./Main";
 
-const ProductsList = () => {
+const ProductsList: FC<MainProps> = ({ toggleCart, addToCart }) => {
   return (
     //
     <motion.div
@@ -33,7 +35,12 @@ const ProductsList = () => {
               }
             }}
           >
-            <SingleProduct key={product.id} {...product} />
+            <SingleProduct
+              key={product.id}
+              {...product}
+              toggleCart={toggleCart}
+              addToCart={addToCart}
+            />
           </Link>
         );
       })}

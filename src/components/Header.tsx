@@ -1,12 +1,15 @@
 import { FC } from "react";
 import CartBtn from "./buttons/CartBtn";
-import { useCartContext } from "../context/cart_context";
 import BurgerBtn from "./buttons/BurgerBtn";
 import { useGlobalContext } from "../context/useGlobalContext";
 import { Link } from "react-router-dom";
 
-const Header: FC = () => {
-  const { total_items, toggleCart } = useCartContext();
+type HeaderProps = {
+  toggleCart: () => void;
+  total_items: number;
+};
+
+const Header: FC<HeaderProps> = ({ toggleCart, total_items }) => {
   const { width, lockScroll } = useGlobalContext();
 
   return (
@@ -35,14 +38,12 @@ const Header: FC = () => {
         </Link>
         <div className="header__cart-button">
           <button
-            onClick={
-              width <= 410
-                ? () => {
-                    lockScroll();
-                    toggleCart();
-                  }
-                : () => {}
-            }
+            onClick={() => {
+              if (width <= 410) {
+                lockScroll();
+                toggleCart();
+              }
+            }}
           >
             <CartBtn fill="black" />
             <div className="header__total-amount">{total_items}</div>

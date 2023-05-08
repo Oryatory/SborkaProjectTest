@@ -1,4 +1,3 @@
-import { useCartContext } from "../context/cart_context";
 import { formatPrice } from "../utils/formatPrice";
 import CartBtn from "./buttons/CartBtn";
 import { ProductProps } from "../utils/data";
@@ -8,9 +7,9 @@ import { products } from "../utils/data";
 import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { MainProps } from "./Main";
 
-const SingleProductPage: FC = () => {
-  const { addToCart, toggleCart } = useCartContext();
+const SingleProductPage: FC<MainProps> = ({ toggleCart, addToCart }) => {
   const { width, lockScroll } = useGlobalContext();
   const { productId } = useParams();
   const product = products.find((pr) => pr.id === productId);
@@ -52,7 +51,6 @@ const SingleProductPage: FC = () => {
         </div>
       </div>
     </motion.div>
-    // </motion.div>
   );
 };
 export default SingleProductPage;

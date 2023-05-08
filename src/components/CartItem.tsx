@@ -4,7 +4,7 @@ import DecreaseBtn from "./buttons/DecreaseBtn";
 import DeleteBtn from "./buttons/DeleteBtn";
 import { useCartContext } from "../context/cart_context";
 import { ProductProps } from "../utils/data";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { motion } from "framer-motion";
 
 const CartItem: FC<ProductProps> = ({ name, image, price, amount, id }) => {
@@ -59,4 +59,4 @@ const CartItem: FC<ProductProps> = ({ name, image, price, amount, id }) => {
     </motion.div>
   );
 };
-export default CartItem;
+export default memo(CartItem);

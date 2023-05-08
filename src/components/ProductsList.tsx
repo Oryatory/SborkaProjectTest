@@ -8,7 +8,6 @@ import { MainProps } from "./Main";
 
 const ProductsList: FC<MainProps> = ({ toggleCart, addToCart }) => {
   return (
-    //
     <motion.div
       className="products__wrapper"
       initial={{ opacity: 0 }}
@@ -45,7 +44,6 @@ const ProductsList: FC<MainProps> = ({ toggleCart, addToCart }) => {
         );
       })}
     </motion.div>
-    // </div>
   );
 };
 export default ProductsList;
